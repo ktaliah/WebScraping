@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Mission to Mars!</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+<body>
+    <div class="container text-center">
+        <h1 class='jumbotron'>Mission to Mars!</h1>
+        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Find out about Mars!</a></p>
+            <div>
+                <ul style="list-style: none;">
+                </br>
+                <h3>Here is some recent news about Mars:</h3>
+                    <b>{{news.title}}</b>
+                    <p>{{news.paragraph}}</p>
+                </br>
+                <h4>Here is a nice picture from space:</h4>
+                    <img src="{{featured_image_url.featured_image}}" alt='featured image'>
+                </br>
+                <h4>Let me see what spring is like on <s>Jupiter and</s> Mars:</h4>
+                    <p>{{mars_weather.weather}}</p>
+                </br>
+                <h4>Here are some facts about Mars:</h4>
+                    <center><p>{{mars_info.table|safe}}</p></center>
+                </br>
+                <h4>Here are some pictures of Mars' Hemispheres:</h4>
+                {% for hemisphere in mars_hemispheres %}
+                    <p>{{hemisphere.title}}</p>
+                    <img src="{{hemisphere.img_url}}" alt='image url' width="50%" height="50%">
+                {% endfor %}
+            </div>
+    </div>
+</body>
+
+</html>
